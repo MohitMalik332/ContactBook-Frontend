@@ -1,0 +1,11 @@
+.sideBar {
+    width: 50px;
+    height: 100vh;
+    border: 1px solid black;
+}
+
+.sidebarBtns {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

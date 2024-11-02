@@ -1,0 +1,5 @@
+.ShowAllContacts {
+    border: 1px solid black;
+    display: flex;
+    background-color: rgb(53, 107, 145);
+}
