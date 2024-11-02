@@ -1,3 +1,4 @@
+import "./AddContact.css"
 import { useState } from "react";
 
 
@@ -19,23 +20,23 @@ const AddContact = ({ addContact }) => {
 
 
     return (
-        <div>
+        <div className="addNewContact">
             <input 
-                type="text" 
+                type="text"
                 placeholder="Enter name"
                 name="name"
                 onChange={(event) => getUserInput('name', event)}
             />
 
             <input 
-                type="text" 
+                type="text"
                 placeholder="Enter phone number" 
                 name="phone"
                 onChange={(event) => getUserInput('phone', event)}
             />
 
             <input 
-                type="email" 
+                type="email"
                 placeholder="Enter email address" 
                 name="email"
                 onChange={(event) => getUserInput('email', event)}

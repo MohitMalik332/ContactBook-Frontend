@@ -6,15 +6,28 @@ import ShowAllContacts from "./components/ShowAllContacts"
 import SideBar from "./components/SideBar"
 import AddContact from "./components/AddContact";
 import { json } from "react-router-dom";
+import ContactDetails from "./components/ContactDetails";
 
 
 function App() {  
   const [error, setError] = useState();
   const [showAllContacts, setShowAllContacts] = useState([]);
   const [flag, setFlag] = useState(false);
+  const [contactDetails, setContactDetails] = useState({});
+
+    
+  
+    function showContactDetails(contact) {
+        setContactDetails({
+            name: contact.name,
+            phone: contact.phone,
+            email: contact.email
+        });
+    }
 
     function getAllContacts() {
       fetchContacts();
+      setFlag(false);
     }
 
     async function fetchContacts() {
@@ -43,7 +56,13 @@ function App() {
           throw new Error('Failed to Add Contact');
         }
   
-        return responseData.message;
+        // return responseData.message;
+
+        return (
+          <div>
+            Contact Added Successfully...
+          </div>
+        )
       }
 
 
@@ -59,8 +78,15 @@ function App() {
       <Header />
       <div className="ShowAllContacts">
         <SideBar getAllContact={getAllContacts} addNewContact={addNewContact}/>
-        <ShowAllContacts error={error} showAllContacts={showAllContacts}/>
+        {!flag && <ShowAllContacts
+          error={error} 
+          showAllContacts={showAllContacts}
+          showContactDetails={showContactDetails}
+        />}
         {flag && <AddContact addContact={addContact}/>}
+        <ContactDetails 
+          contactDetails={contactDetails}
+        />
       </div>
 
     </>
